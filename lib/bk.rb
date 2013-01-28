@@ -1,5 +1,4 @@
 require 'text/levenshtein'
-require 'yaml'
 
 module BK
   # Paul Battley 2007
@@ -65,11 +64,11 @@ module BK
     end
 
     def export(stream)
-      stream.write YAML.dump(self)
+      stream.write Marshal.dump(self)
     end
 
     def self.import(stream)
-      YAML.load(stream.read)
+      Marshal.load(stream.read)
     end
   end
 end
